@@ -35,10 +35,8 @@ const UserDashboard = () => {
     }
   }
 
-  const qrUrl = generateQRCodeUrl(
-    `${window.location.origin}/scan?id=${currentUser.generatedId}`,
-    200
-  )
+  const qrLink = currentUser.qrLink || `${window.location.origin}/scan?id=${currentUser.generatedId}`
+  const qrUrl = generateQRCodeUrl(qrLink, 200)
 
   const regDate = currentUser.timestamp
     ? new Date(currentUser.timestamp).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })

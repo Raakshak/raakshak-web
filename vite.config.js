@@ -6,6 +6,7 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
+    host: true, // Exposes on your local network IP
   },
   build: {
     rollupOptions: {

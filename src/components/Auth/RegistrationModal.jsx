@@ -77,9 +77,75 @@ const RegistrationModal = ({ open, onClose, onSuccess, onOpenStudio }) => {
     if (hasError) return
 
     setSubmitting(true)
-    const amountInPaise = activePrice * 100
     const vehicle = vehicleNum.toUpperCase()
     const appliedCoupon = couponCode.trim().toUpperCase()
+    const isDev = import.meta.env.DEV
+
+    // Save to Firebase (shared between dev bypass and payment handler)
+    const saveToFirebase = async (paymentId) => {
+      const customersRef = ref(db, 'customers')
+      const generatedID = 'RKSK' + Math.floor(1000 + Math.random() * 9000)
+      const newCustomerRef = push(customersRef)
+
+      const qrLink = `${window.location.origin}/scan?id=${generatedID}`
+
+      const formData = {
+        generatedId: generatedID,
+        name: ownerName.toUpperCase(),
+        vehicle: vehicle,
+        mobile: mobileNum,
+        whatsapp: whatsappNum,
+        plan: isCustomQR ? 'Premium Studio' : 'Lite Plan',
+        amount: activePrice,
+        paymentId: paymentId,
+        coupon: appliedCoupon,
+        status: isDev ? 'Dev-Free' : 'Paid',
+        qrLink: qrLink,
+        timestamp: new Date().toISOString(),
+      }
+
+      await set(newCustomerRef, formData)
+
+      return { generatedID, qrLink }
+    }
+
+    // DEV MODE: Skip payment
+    if (isDev) {
+      try {
+        const { generatedID, qrLink } = await saveToFirebase('DEV_BYPASS_' + Date.now())
+
+        // Partner stats (same logic)
+        const partnersRef = ref(db, 'partners')
+        const partnerQuery = query(partnersRef, orderByChild('code'), equalTo(appliedCoupon))
+        const partnerSnap = await get(partnerQuery)
+        if (partnerSnap.exists()) {
+          const partnerKey = Object.keys(partnerSnap.val())[0]
+          const partnerData = Object.values(partnerSnap.val())[0]
+          const partnerComm = parseFloat(partnerData.comm) || 0
+          await update(ref(db, `partners/${partnerKey}`), {
+            totalSales: increment(1),
+            totalRevenue: increment(activePrice),
+            pendingComm: increment(partnerComm),
+          })
+        }
+
+        const qrUrl = generateQRCodeUrl(qrLink, 150)
+        resetForm()
+        onClose()
+        if (onSuccess) {
+          onSuccess({ generatedId: generatedID, vehicleNum: vehicle, qrUrl })
+        }
+      } catch (err) {
+        console.error('Dev save error:', err)
+        alert('Firebase error: ' + err.message)
+      } finally {
+        setSubmitting(false)
+      }
+      return
+    }
+
+    // PRODUCTION: Razorpay payment
+    const amountInPaise = activePrice * 100
 
     const options = {
       key: RAZORPAY_KEY,
@@ -90,25 +156,7 @@ const RegistrationModal = ({ open, onClose, onSuccess, onOpenStudio }) => {
       image: 'https://i.postimg.cc/yYyX0Mt7/Chat-GPT-Image-Feb-27-2026-11-52-07-PM.png',
       handler: async function (response) {
         try {
-          const customersRef = ref(db, 'customers')
-          const generatedID = 'RKSK' + Math.floor(1000 + Math.random() * 9000)
-          const newCustomerRef = push(customersRef)
-
-          const formData = {
-            generatedId: generatedID,
-            name: ownerName.toUpperCase(),
-            vehicle: vehicle,
-            mobile: mobileNum,
-            whatsapp: whatsappNum,
-            plan: isCustomQR ? 'Premium Studio' : 'Lite Plan',
-            amount: activePrice,
-            paymentId: response.razorpay_payment_id,
-            coupon: appliedCoupon,
-            status: 'Paid',
-            timestamp: new Date().toISOString(),
-          }
-
-          await set(newCustomerRef, formData)
+          const { generatedID, qrLink } = await saveToFirebase(response.razorpay_payment_id)
 
           // Partner stats auto-update
           const partnersRef = ref(db, 'partners')
@@ -126,9 +174,8 @@ const RegistrationModal = ({ open, onClose, onSuccess, onOpenStudio }) => {
             })
           }
 
-          // Generate QR URL
-          const finalQRData = `${window.location.origin}/scan?id=${generatedID}`
-          const qrUrl = generateQRCodeUrl(finalQRData, 150)
+          // Generate QR URL from stored link
+          const qrUrl = generateQRCodeUrl(qrLink, 150)
 
           resetForm()
           onClose()

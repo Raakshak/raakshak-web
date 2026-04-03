@@ -22,9 +22,29 @@ const ScannerPage = () => {
 
     const fetchUser = async () => {
       try {
+        // Try query by generatedId first
         const customersRef = ref(db, 'customers')
-        const q = query(customersRef, orderByChild('generatedId'), equalTo(id))
-        const snap = await get(q)
+        let snap
+        try {
+          const q = query(customersRef, orderByChild('generatedId'), equalTo(id))
+          snap = await get(q)
+        } catch (queryErr) {
+          // If index not set, fallback: fetch all and filter
+          console.warn('Index query failed, using fallback:', queryErr.message)
+          const allSnap = await get(customersRef)
+          if (allSnap.exists()) {
+            const allData = allSnap.val()
+            const matchKey = Object.keys(allData).find(k => allData[k].generatedId === id)
+            if (matchKey) {
+              setUserData({ key: matchKey, ...allData[matchKey] })
+              setLoading(false)
+              return
+            }
+          }
+          setError('Vehicle not found')
+          setLoading(false)
+          return
+        }
 
         if (snap.exists()) {
           const data = snap.val()
@@ -35,7 +55,7 @@ const ScannerPage = () => {
         }
       } catch (err) {
         console.error('Fetch error:', err)
-        setError('Connection error')
+        setError('Connection error. Please try again.')
       } finally {
         setLoading(false)
       }
@@ -44,10 +64,11 @@ const ScannerPage = () => {
     fetchUser()
   }, [id])
 
-  // Build WhatsApp URL
+  // Build WhatsApp URL — use location.href so mobile browsers don't block it
   const sendWhatsApp = (number, message) => {
     const encoded = encodeURIComponent(message)
-    window.open(`https://wa.me/91${number}?text=${encoded}`, '_blank')
+    const url = `https://api.whatsapp.com/send?phone=91${number}&text=${encoded}`
+    window.location.href = url
   }
 
   const handleWrongParking = () => {
@@ -80,9 +101,8 @@ const ScannerPage = () => {
 
   const handleCallOwner = () => {
     if (!userData) return
-    // Use WhatsApp to protect privacy instead of direct call
     const contactNum = userData.whatsapp || userData.mobile
-    window.open(`https://wa.me/91${contactNum}`, '_blank')
+    window.location.href = `https://api.whatsapp.com/send?phone=91${contactNum}`
   }
 
   // Loading
