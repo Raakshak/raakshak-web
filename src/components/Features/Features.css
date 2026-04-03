@@ -12,6 +12,7 @@
   letter-spacing: -1.5px;
   text-transform: uppercase;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .section-title .highlight {
@@ -25,74 +26,116 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 50px;
+  text-align: center;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .feature-card {
-  background: rgba(21, 21, 21, 0.6);
-  border: 1px solid rgba(242, 140, 56, 0.15);
-  border-radius: 20px;
-  padding: 30px;
-  transition: all 0.3s ease;
+  background: rgba(21, 21, 21, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 22px;
+  padding: 28px 22px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .feature-card::before {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(242, 140, 56, 0.1);
-  transition: left 0.3s ease;
-  z-index: -1;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #F28C38, transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
 .feature-card:hover::before {
-  left: 0;
+  opacity: 1;
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(242, 140, 56, 0.06) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.feature-card:hover::after {
+  opacity: 1;
 }
 
 .feature-card:hover {
-  border-color: #F28C38;
-  transform: translateY(-5px);
+  border-color: rgba(242, 140, 56, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(242, 140, 56, 0.08);
+  background: rgba(21, 21, 21, 0.7);
 }
 
 .feature-badge {
   display: inline-block;
-  background: rgba(242, 140, 56, 0.2);
+  background: rgba(242, 140, 56, 0.12);
   color: #F28C38;
-  padding: 6px 12px;
+  padding: 5px 14px;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 900;
-  letter-spacing: 0.5px;
-  margin-bottom: 15px;
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(242, 140, 56, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .feature-icon {
-  font-size: 50px;
-  margin-bottom: 20px;
+  font-size: 44px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.15) translateY(-4px);
 }
 
 .feature-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
   color: #fff;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .feature-desc {
-  font-size: 13px;
-  color: #999;
-  line-height: 1.6;
+  font-size: 12px;
+  color: #777;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -110,16 +153,17 @@
   }
 
   .features-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 
   .feature-card {
-    padding: 20px;
+    padding: 22px 16px;
+    border-radius: 18px;
   }
 
   .feature-icon {
-    font-size: 40px;
+    font-size: 36px;
   }
 }
 
@@ -134,25 +178,32 @@
   }
 
   .features-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
   .feature-card {
-    padding: 16px;
-    border-radius: 14px;
+    padding: 18px 12px;
+    border-radius: 16px;
   }
 
   .feature-icon {
-    font-size: 36px;
-    margin-bottom: 12px;
+    font-size: 30px;
+    margin-bottom: 10px;
   }
 
   .feature-title {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .feature-desc {
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .feature-badge {
+    font-size: 8px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
   }
 }

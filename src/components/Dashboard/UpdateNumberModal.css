@@ -1,0 +1,136 @@
+/* Update Number Modal */
+.update-num-modal {
+  max-width: 420px !important;
+}
+
+.un-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.un-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.un-header h2 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.un-header p {
+  color: #666;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.un-field {
+  margin-bottom: 16px;
+}
+
+.un-field label {
+  display: block;
+  color: #F28C38;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.un-field input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.un-field input:focus {
+  border-color: #F28C38;
+  box-shadow: 0 0 0 3px rgba(242, 140, 56, 0.1);
+}
+
+.un-field input::placeholder {
+  color: #444;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.un-arrow {
+  text-align: center;
+  color: #F28C38;
+  font-size: 22px;
+  font-weight: 900;
+  margin: -6px 0 10px;
+  opacity: 0.6;
+}
+
+.un-error {
+  color: #ff4d4d;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 14px;
+  padding: 10px;
+  background: rgba(255, 77, 77, 0.06);
+  border: 1px solid rgba(255, 77, 77, 0.15);
+  border-radius: 10px;
+}
+
+.un-submit {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(90deg, #F28C38, #ff6a00);
+  color: #000;
+  border: none;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  margin-top: 6px;
+}
+
+.un-submit:hover:not(:disabled) {
+  box-shadow: 0 10px 30px rgba(242, 140, 56, 0.3);
+  transform: translateY(-1px);
+}
+
+.un-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .update-num-modal {
+    padding: 22px 16px !important;
+  }
+
+  .un-header h2 {
+    font-size: 19px;
+  }
+
+  .un-field input {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .un-submit {
+    padding: 14px;
+    font-size: 13px;
+  }
+}

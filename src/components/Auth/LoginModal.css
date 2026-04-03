@@ -69,6 +69,15 @@
   letter-spacing: 1px;
 }
 
+.login-error {
+  color: #ff4d4d;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: -10px;
+}
+
 .btn-login-submit {
   background: linear-gradient(90deg, #F28C38, #ff6a00);
   color: #000;

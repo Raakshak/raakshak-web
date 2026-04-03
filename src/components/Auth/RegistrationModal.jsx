@@ -127,7 +127,7 @@ const RegistrationModal = ({ open, onClose, onSuccess, onOpenStudio }) => {
           }
 
           // Generate QR URL
-          const finalQRData = `${window.location.origin}/receiver.html?id=${generatedID}`
+          const finalQRData = `${window.location.origin}/scan?id=${generatedID}`
           const qrUrl = generateQRCodeUrl(finalQRData, 150)
 
           resetForm()

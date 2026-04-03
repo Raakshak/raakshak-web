@@ -1,0 +1,254 @@
+/* Upgrade Plan Modal */
+.upgrade-modal {
+  max-width: 520px !important;
+}
+
+.up-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.up-icon {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+
+.up-header h2 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.up-highlight {
+  color: #F28C38;
+}
+
+.up-header p {
+  color: #666;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Plan Cards */
+.up-plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.up-plan-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 22px 16px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  overflow: hidden;
+}
+
+.up-plan-card:hover {
+  border-color: rgba(242, 140, 56, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(242, 140, 56, 0.08);
+}
+
+.up-plan-selected {
+  border-color: #F28C38 !important;
+  background: rgba(242, 140, 56, 0.06) !important;
+  box-shadow: 0 0 0 1px #F28C38, 0 12px 30px rgba(242, 140, 56, 0.12) !important;
+}
+
+.up-plan-top {
+  margin-bottom: 14px;
+}
+
+.up-plan-icon {
+  font-size: 30px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.up-plan-card h3 {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.up-plan-desc {
+  color: #777;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.up-plan-price {
+  margin-bottom: 14px;
+}
+
+.up-rupee {
+  color: #F28C38;
+  font-size: 16px;
+  font-weight: 700;
+  vertical-align: top;
+}
+
+.up-amount {
+  color: #F28C38;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.up-plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.up-plan-features li {
+  color: #bbb;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.up-check {
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.up-selected-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #F28C38;
+  color: #000;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* Comparison Table */
+.up-comparison {
+  margin-bottom: 20px;
+  background: rgba(10, 10, 10, 0.5);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.up-comparison-title {
+  color: #888;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.up-comparison table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.up-comparison thead tr {
+  background: rgba(242, 140, 56, 0.06);
+}
+
+.up-comparison th {
+  padding: 10px 12px;
+  color: #888;
+  font-weight: 700;
+  text-align: left;
+  font-size: 10px;
+}
+
+.up-pro-th {
+  color: #F28C38 !important;
+  text-align: center !important;
+}
+
+.up-comparison td {
+  padding: 9px 12px;
+  color: #ccc;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.up-comparison tr:last-child td {
+  border-bottom: none;
+}
+
+.up-cell-center {
+  text-align: center;
+}
+
+/* Pay Button */
+.up-pay-btn {
+  width: 100%;
+  padding: 17px;
+  background: linear-gradient(90deg, #F28C38, #ff6a00);
+  color: #000;
+  border: none;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.up-pay-btn:hover:not(:disabled) {
+  box-shadow: 0 12px 35px rgba(242, 140, 56, 0.35);
+  transform: translateY(-1px);
+}
+
+.up-pay-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .upgrade-modal {
+    padding: 22px 14px !important;
+  }
+
+  .up-header h2 {
+    font-size: 20px;
+  }
+
+  .up-plans {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .up-amount {
+    font-size: 30px;
+  }
+
+  .up-plan-card {
+    padding: 18px 14px;
+  }
+
+  .up-comparison table {
+    font-size: 10px;
+  }
+
+  .up-pay-btn {
+    padding: 15px;
+    font-size: 13px;
+  }
+}

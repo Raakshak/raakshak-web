@@ -11,6 +11,22 @@ export const useAppContext = () => {
 export const AppProvider = ({ children }) => {
   const [language, setLanguage] = useState('en')
 
+  // Auth state
+  const [currentUser, setCurrentUser] = useState(() => {
+    const saved = sessionStorage.getItem('rakshak_user')
+    return saved ? JSON.parse(saved) : null
+  })
+
+  const loginUser = useCallback((userData) => {
+    setCurrentUser(userData)
+    sessionStorage.setItem('rakshak_user', JSON.stringify(userData))
+  }, [])
+
+  const logoutUser = useCallback(() => {
+    setCurrentUser(null)
+    sessionStorage.removeItem('rakshak_user')
+  }, [])
+
   // Modal states
   const [registrationOpen, setRegistrationOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
@@ -54,37 +70,29 @@ export const AppProvider = ({ children }) => {
   }, [])
 
   const value = {
+    // Auth
+    currentUser,
+    loginUser,
+    logoutUser,
+
     // Language
     language,
     setLanguage,
 
     // Modal states
-    registrationOpen,
-    setRegistrationOpen,
-    loginOpen,
-    setLoginOpen,
-    adminLoginOpen,
-    setAdminLoginOpen,
-    partnerLoginOpen,
-    setPartnerLoginOpen,
-    supportTicketOpen,
-    setSupportTicketOpen,
-    studioOpen,
-    setStudioOpen,
-    successOpen,
-    setSuccessOpen,
-    successData,
-    setSuccessData,
-    serviceInquiryOpen,
-    setServiceInquiryOpen,
-    activeServiceType,
-    setActiveServiceType,
-    sliderOpen,
-    setSliderOpen,
-    sliderIndex,
-    sliderCategory,
-    currentVehicleNum,
-    setCurrentVehicleNum,
+    registrationOpen, setRegistrationOpen,
+    loginOpen, setLoginOpen,
+    adminLoginOpen, setAdminLoginOpen,
+    partnerLoginOpen, setPartnerLoginOpen,
+    supportTicketOpen, setSupportTicketOpen,
+    studioOpen, setStudioOpen,
+    successOpen, setSuccessOpen,
+    successData, setSuccessData,
+    serviceInquiryOpen, setServiceInquiryOpen,
+    activeServiceType, setActiveServiceType,
+    sliderOpen, setSliderOpen,
+    sliderIndex, sliderCategory,
+    currentVehicleNum, setCurrentVehicleNum,
 
     // Handlers
     handleRegisterClick,

@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useAppContext } from '../../context/AppContext'
 import './AboutUs.css'
 
 const TEAM_MEMBERS = [
@@ -95,6 +96,7 @@ const StatCard = ({ target, label, suffix, display }) => {
 }
 
 const AboutUs = () => {
+  const { handleRegisterClick } = useAppContext()
   const [letterOpen, setLetterOpen] = useState(false)
 
   // Scroll to top on mount
@@ -302,7 +304,7 @@ const AboutUs = () => {
       <section className="about-cta-section">
         <h2>Ready to Protect Your Vehicle?</h2>
         <p>Activate Rakshak today and make every journey safer.</p>
-        <Link to="/" className="about-activate-btn">Activate Rakshak</Link>
+        <button className="about-activate-btn" onClick={handleRegisterClick}>Activate Rakshak</button>
       </section>
 
       {/* Footer */}
