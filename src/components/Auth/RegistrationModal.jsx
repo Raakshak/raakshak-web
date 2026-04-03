@@ -2,9 +2,11 @@ import React, { useState, useCallback } from 'react'
 import { RAZORPAY_KEY, TAG_PRICES, COMPARISON_TABLE } from '../../utils/constants'
 import { validateMobileNumber, generateQRCodeUrl } from '../../utils/helpers'
 import { db, ref, push, set, get, update, query, orderByChild, equalTo, increment } from '../../config/firebase'
+import useBodyLock from '../../hooks/useBodyLock'
 import './RegistrationModal.css'
 
 const RegistrationModal = ({ open, onClose, onSuccess, onOpenStudio }) => {
+  useBodyLock(open)
   const [ownerName, setOwnerName] = useState('')
   const [vehicleNum, setVehicleNum] = useState('')
   const [mobileNum, setMobileNum] = useState('')

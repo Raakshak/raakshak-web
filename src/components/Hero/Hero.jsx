@@ -1,11 +1,15 @@
 import React from 'react'
 import { SafetyCertificateOutlined } from '@ant-design/icons'
+import coverImg from '../../assets/icons/coverpage.jpg'
 import './Hero.css'
 
 const Hero = ({ language, onRegisterClick }) => {
   return (
     <section className="hero">
-      <div className="hero-background"></div>
+      <div className="hero-bg">
+        <img src={coverImg} alt="" className="hero-bg-img" />
+        <div className="hero-overlay" />
+      </div>
       <div className="hero-content">
         <div className="hero-counter">
           <span className="blinking-dot" aria-hidden="true"></span> 2,484 VEHICLES PROTECTED TODAY

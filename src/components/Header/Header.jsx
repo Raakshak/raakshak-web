@@ -1,10 +1,13 @@
 import { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons'
+import useBodyLock from '../../hooks/useBodyLock'
+import logoImg from '../../assets/icons/Rakshak.jpg'
 import './Header.css'
 
 const Header = ({ language, setLanguage, onLoginClick, onPartnerLogin, onSupportTicket, onAdminLogin }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  useBodyLock(mobileMenuOpen)
   const [partnerDropdownOpen, setPartnerDropdownOpen] = useState(false)
 
   const closeMenu = useCallback(() => setMobileMenuOpen(false), [])
@@ -16,61 +19,41 @@ const Header = ({ language, setLanguage, onLoginClick, onPartnerLogin, onSupport
   return (
     <header className="header">
       <div className="header-container">
-        <div className="logo">RAKSHAK</div>
+        {/* Logo + Brand */}
+        <Link to="/" className="logo-wrap" onClick={closeMenu}>
+          <img src={logoImg} alt="Rakshak" className="logo-img" />
+          <span className="logo-text">RAKSHAK</span>
+        </Link>
 
+        {/* Hamburger */}
         <button
           className="mobile-menu-toggle"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={mobileMenuOpen}
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
         >
           {mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
         </button>
 
-        <nav
-          className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}
-          role="navigation"
-          aria-label="Main navigation"
-        >
-          <a href="#features" onClick={handleNavClick}>Why Rakshak?</a>
-          <a href="#premium-tools" onClick={handleNavClick}>Premium Tools</a>
-          <a href="#services" onClick={handleNavClick}>Rakshak Services</a>
-          <Link to="/about" onClick={handleNavClick}>About Us</Link>
-          <a href="#contact" onClick={handleNavClick}>Contact Us</a>
-
-          {/* Mobile Only Links */}
-          <div className="mobile-auth-section">
-            <button className="mobile-link highlight-link" onClick={() => { closeMenu(); onLoginClick() }}>
-              ALREADY REGISTERED?
-            </button>
-            <button className="mobile-link" onClick={() => { closeMenu(); onPartnerLogin() }}>
-              Partner Login
-            </button>
-            <button className="mobile-link" onClick={() => { closeMenu(); onSupportTicket() }}>
-              Support & Ticket
-            </button>
-            <button className="mobile-link" onClick={() => { closeMenu(); onAdminLogin() }}>
-              Admin Login
-            </button>
-          </div>
+        {/* Nav Links — Desktop only */}
+        <nav className="nav-desktop">
+          <a href="#features">Why Rakshak?</a>
+          <a href="#premium-tools">Premium Tools</a>
+          <a href="#services">Services</a>
+          <Link to="/about">About Us</Link>
+          <a href="#contact">Contact</a>
         </nav>
 
-        {/* Desktop Right */}
+        {/* Right Side — Desktop only */}
         <div className="nav-right">
-          <button className="btn-login" onClick={onLoginClick} aria-label="Login or register">
-            ALREADY REGISTERED?
-          </button>
+          <button className="btn-login" onClick={onLoginClick}>ALREADY REGISTERED?</button>
           <select
             className="language-select"
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
-            aria-label="Select language"
           >
             <option value="en">ENGLISH</option>
-            <option value="hi">HINDI (हिन्दी)</option>
+            <option value="hi">HINDI</option>
           </select>
-
-          {/* Partner Zone Dropdown */}
           <div
             className="partner-dropdown"
             onMouseEnter={() => setPartnerDropdownOpen(true)}
@@ -87,8 +70,33 @@ const Header = ({ language, setLanguage, onLoginClick, onPartnerLogin, onSupport
         </div>
       </div>
 
+      {/* Mobile Menu — Slide Panel */}
       {mobileMenuOpen && (
-        <div className="mobile-overlay" onClick={closeMenu} aria-hidden="true" />
+        <>
+          <div className="mobile-overlay" onClick={closeMenu} />
+          <nav className="mobile-menu">
+            <a href="#features" onClick={handleNavClick}>Why Rakshak?</a>
+            <a href="#premium-tools" onClick={handleNavClick}>Premium Tools</a>
+            <a href="#services" onClick={handleNavClick}>Rakshak Services</a>
+            <Link to="/about" onClick={handleNavClick}>About Us</Link>
+            <a href="#contact" onClick={handleNavClick}>Contact Us</a>
+
+            <div className="mobile-divider" />
+
+            <button className="mobile-link highlight-link" onClick={() => { closeMenu(); onLoginClick() }}>
+              ALREADY REGISTERED?
+            </button>
+            <button className="mobile-link" onClick={() => { closeMenu(); onPartnerLogin() }}>
+              Partner Login
+            </button>
+            <button className="mobile-link" onClick={() => { closeMenu(); onSupportTicket() }}>
+              Support & Ticket
+            </button>
+            <button className="mobile-link" onClick={() => { closeMenu(); onAdminLogin() }}>
+              Admin Login
+            </button>
+          </nav>
+        </>
       )}
     </header>
   )

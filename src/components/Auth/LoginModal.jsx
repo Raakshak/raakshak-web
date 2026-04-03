@@ -2,9 +2,11 @@ import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { db, ref, get, query, orderByChild, equalTo } from '../../config/firebase'
 import { useAppContext } from '../../context/AppContext'
+import useBodyLock from '../../hooks/useBodyLock'
 import './LoginModal.css'
 
 const LoginModal = ({ open, onClose }) => {
+  useBodyLock(open)
   const [mobile, setMobile] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
