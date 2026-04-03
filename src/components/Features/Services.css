@@ -1,0 +1,72 @@
+/* Services Component */
+
+.services-section {
+  padding: 80px 20px;
+  margin-top: 50px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: rgba(21, 21, 21, 0.6);
+  border: 1px solid rgba(242, 140, 56, 0.15);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  border-color: #F28C38;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(242, 140, 56, 0.2);
+}
+
+.service-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.service-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.service-price {
+  color: #F28C38;
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.btn-service {
+  background: linear-gradient(90deg, #F28C38, #ff6a00);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-service:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(242, 140, 56, 0.3);
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}

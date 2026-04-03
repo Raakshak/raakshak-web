@@ -1,0 +1,192 @@
+:root {
+    --primary: #F28C38;
+    --bg-black: #000;
+    --bg-dark: #050505;
+    --bg-card: #0a0a0a;
+    --prof-green: #004d00; /* Official Green for Hover */
+}
+
+body { background: var(--bg-black); color: #fff; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+.highlight { color: var(--primary); text-shadow: 0 0 10px rgba(242, 140, 56, 0.3); }
+
+/* HERO */
+.about-hero-advance {
+    height: 75vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), 
+                url('https://i.postimg.cc/FFySFWzB/Gemini-Generated-Image-4sf1jg4sf1jg4sf1.png');
+    background-size: cover; background-position: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    border-bottom: 2px solid var(--primary);
+}
+.hero-text-big { font-size: clamp(30px, 6vw, 65px); font-weight: 900; text-transform: uppercase; letter-spacing: -2px; }
+.hero-tag-sub { color: var(--primary); font-size: 18px; font-weight: 700; letter-spacing: 5px; margin-top: 15px; }
+
+/* STATS */
+.stats-section {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 60px 10%; background: var(--bg-dark); text-align: center; gap: 30px;
+}
+.stat-card h2 { font-size: 45px; color: var(--primary); margin: 0; }
+.stat-card p { color: #888; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; }
+
+/* INFO BLOCKS */
+.info-block { padding: 80px 10%; display: flex; gap: 50px; align-items: center; background: var(--bg-dark); }
+.info-text h2 { font-size: 45px; font-weight: 900; margin-bottom: 25px; }
+.info-text p { font-size: 18px; color: #aaa; line-height: 1.8; }
+.info-visual img { width: 100%; border-radius: 40px; border: 1px solid var(--primary); }
+.critical-red { color: #ff4d4d; font-weight: 900; text-decoration: underline; }
+
+/* HOW IT WORKS (FIXED GREEN HOVER) */
+.how-it-works, .use-cases { padding: 80px 5%; text-align: center; }
+.steps-container, .use-case-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px; margin-top: 50px;
+}
+.step-card, .case-card {
+    background: var(--bg-card); padding: 40px 20px; border-radius: 20px;
+    border: 1px solid #1a1a1a; transition: 0.3s;
+}
+
+/* YAHAN FIX KIYA HAI: HOW IT WORKS GREEN HOVER */
+.step-card:hover { 
+    background: var(--prof-green) !important; 
+    border-color: #00ff00; 
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
+}
+
+.case-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+.step-icon, .case-card i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
+
+/* TEAM */
+.team-section { padding: 100px 5%; text-align: center; }
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 60px; }
+.team-card { background: var(--bg-card); border: 1px solid #1a1a1a; border-radius: 30px; padding: 40px 20px; transition: 0.4s; position: relative; }
+.team-card:hover { background: #001a33; border-color: #007bff; }
+.member-img-box { width: 130px; height: 130px; border-radius: 50%; margin: 0 auto 20px; border: 3px solid var(--primary); overflow: hidden; }
+.member-img-box img { width: 100%; height: 100%; object-fit: cover; }
+.linkedin-icon { color: #007bff; font-size: 20px; margin-top: 15px; }
+
+/* CEO BANNER & MODAL */
+.ceo-banner-section { padding: 60px 5%; }
+.ceo-image-overlay { position: relative; height: 450px; border-radius: 30px; overflow: hidden; }
+.ceo-bg-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
+.banner-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+.read-letter-btn { background: var(--primary); border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; }
+
+/* MODAL FIX FOR LETTER */
+.modal { display: none; position: fixed; z-index: 10001; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); }
+.modal-content { 
+    background: #fff; margin: 2vh auto; width: 90%; max-width: 850px; 
+    height: 90vh; border-radius: 25px; color: #333; overflow: hidden; 
+    display: flex; flex-direction: column; position: relative; 
+}
+
+/* Sticky header ke liye position fix */
+.modal-sticky-header { position: relative; width: 100%; flex-shrink: 0; }
+.modal-header-img { width: 100%; height: 250px; object-fit: cover; }
+.close-btn { 
+    position: absolute; right: 20px; top: 20px; font-size: 16px; 
+    cursor: pointer; color: #fff; z-index: 10005; background: var(--primary); 
+    padding: 10px 20px; border-radius: 50px; font-weight: 900; 
+}
+
+/* Modal body jisme letter scroll hoga */
+.modal-body { 
+    padding: 40px; overflow-y: auto; text-align: left; flex-grow: 1;
+    line-height: 1.8; font-size: 17px; color: #333; 
+}
+.modal-body h1 { color: #000; font-size: 32px; margin-bottom: 5px; }
+.modal-body h3 { color: #000; margin-top: 25px; }
+.designation { color: var(--primary); font-weight: bold; margin-bottom: 20px; }
+.signature { margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
+
+/* CTA (Fixed for Registration Link) */
+.cta-section { padding: 100px 5%; text-align: center; background: radial-gradient(circle, #1a1a1a, #000); border-top: 1px solid var(--primary); }
+.activate-btn { 
+    background: var(--primary); padding: 20px 60px; border-radius: 50px; 
+    font-weight: 900; border: none; cursor: pointer; font-size: 20px; 
+    box-shadow: 0 10px 30px rgba(242, 140, 56, 0.3);
+    display: inline-block; text-decoration: none; color: #000; transition: 0.3s;
+}
+.activate-btn:hover { transform: scale(1.1); background: #fff; color: #000; }
+
+/* FOOTER */
+.main-footer { padding: 60px 10%; border-top: 1px solid #111; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 40px; }
+.footer-col h3 { color: var(--primary); }
+.footer-col a { display: block; color: #666; text-decoration: none; margin-bottom: 10px; }
+.footer-bottom { text-align: center; margin-top: 50px; color: #333; }
+/* --- MOBILE RESPONSIVENESS FIX --- */
+@media (max-width: 768px) {
+    /* Hero Section ki height aur text adjust */
+    .about-hero-advance { height: 50vh; padding: 20px; }
+    .hero-text-big { font-size: 32px !important; letter-spacing: -1px; }
+    
+    /* Info Blocks (Images/Text ko upar niche karna) */
+    .info-block { 
+        flex-direction: column !important; 
+        padding: 40px 5%; 
+        gap: 30px; 
+        text-align: center;
+    }
+    .info-text h2 { font-size: 28px; }
+    .info-text p { font-size: 16px; }
+
+    /* Stats Section */
+    .stats-section { padding: 40px 5%; grid-template-columns: 1fr 1fr; }
+    .stat-card h2 { font-size: 30px; }
+
+    /* Modal (Phone par poori screen cover karega) */
+    .modal-content { 
+        width: 95%; 
+        height: 85vh; 
+        margin: 5vh auto; 
+    }
+    .modal-body { padding: 20px; }
+    .modal-body h1 { font-size: 24px; }
+    .modal-header-img { height: 150px; }
+
+    /* Activate Button (Dhyan de ki ungli se dab sake) */
+    .activate-btn { 
+        width: 90%; 
+        padding: 15px 20px; 
+        font-size: 18px; 
+    }
+}
+
+/* Chhote Phones ke liye (e.g. iPhone SE) */
+@media (max-width: 480px) {
+    .stats-section { grid-template-columns: 1fr; }
+    .hero-text-big { font-size: 26px !important; }
+}
+/* --- TABLE SPACING FIX (Dono Pages ke liye) --- */
+
+/* 1. Rows ke beech gap badhao */
+#comparison-container table tr td {
+    padding: 15px 10px !important; /* Upar-niche 15px ka gap dega */
+    line-height: 1.4 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important; /* Halki line separation ke liye */
+}
+
+/* 2. Icons (Check/Cross) ko ekdum center mein karo */
+#comparison-container td:nth-child(2), 
+#comparison-container td:nth-child(3) {
+    text-align: center !important;
+    font-size: 14px !important;
+}
+
+/* 3. Text ko aapas mein bhidne se roko */
+#comparison-container td:first-child {
+    font-weight: 500 !important;
+    color: #bbb !important;
+    width: 40% !important; /* Left side ka text width fix */
+}
+
+/* 4. Pure container ka look clean karo */
+#comparison-container {
+    background: rgba(10, 10, 10, 0.95) !important;
+    border-radius: 15px !important;
+    margin-top: 20px !important;
+    border: 1px solid rgba(242, 140, 56, 0.2) !important;
+}

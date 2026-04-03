@@ -1,0 +1,141 @@
+/* Header Component Styles */
+
+.header {
+  background: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(21, 21, 21, 0.8) 100%);
+  border-bottom: 1px solid rgba(242, 140, 56, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  color: #F28C38;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-menu a {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-menu a:hover {
+  color: #F28C38;
+}
+
+.nav-right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.language-select {
+  background: rgba(242, 140, 56, 0.1);
+  border: 1px solid rgba(242, 140, 56, 0.3);
+  color: #F28C38;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.language-select:hover,
+.language-select:focus {
+  background: rgba(242, 140, 56, 0.2);
+  border-color: #F28C38;
+}
+
+.btn-login {
+  background: #F28C38;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background: #e57c23;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(242, 140, 56, 0.3);
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  color: #F28C38;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  padding: 5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid rgba(242, 140, 56, 0.1);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    gap: 0;
+    padding: 20px;
+    display: none;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu a {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(242, 140, 56, 0.1);
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .header-container {
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+}

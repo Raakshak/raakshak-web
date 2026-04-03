@@ -1,0 +1,147 @@
+/* Hero Component */
+
+.hero {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 70px;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(242, 140, 56, 0.15) 0%,
+    rgba(242, 140, 56, 0.05) 50%,
+    rgba(242, 140, 56, 0) 100%);
+  animation: slideBackground 15s ease-in-out infinite;
+}
+
+@keyframes slideBackground {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero-counter {
+  display: inline-block;
+  background: rgba(242, 140, 56, 0.1);
+  border: 1px solid rgba(242, 140, 56, 0.3);
+  color: #F28C38;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.blinking-dot {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+.hero-title {
+  font-size: 64px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 20px 0;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+.hero-tagline {
+  font-size: 24px;
+  color: #F28C38;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.btn-register {
+  background: linear-gradient(90deg, #F28C38, #ff6a00);
+  color: #000;
+  padding: 18px 40px;
+  font-size: 16px;
+  font-weight: 900;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(242, 140, 56, 0.3);
+}
+
+.btn-register:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(242, 140, 56, 0.4);
+}
+
+.btn-register:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 400px;
+    margin-top: 60px;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-tagline {
+    font-size: 18px;
+  }
+
+  .btn-register {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 350px;
+    margin-top: 50px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    margin: 15px 0;
+  }
+
+  .hero-tagline {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .btn-register {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
+
+  .hero-counter {
+    font-size: 10px;
+    padding: 10px 16px;
+  }
+}

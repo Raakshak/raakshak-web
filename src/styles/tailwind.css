@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tailwind Custom Components */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-[#F28C38] text-black font-bold rounded-lg hover:bg-[#e57c23] transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-transparent border-2 border-[#F28C38] text-[#F28C38] font-bold rounded-lg hover:bg-[#F28C38] hover:text-black transition-all duration-300;
+  }
+
+  .card-dark {
+    @apply bg-[#151515] border border-[#222222] rounded-xl p-6;
+  }
+
+  .card-light {
+    @apply bg-white bg-opacity-5 border border-opacity-10 border-white rounded-xl p-6;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#F28C38] to-[#ff6a00] bg-clip-text text-transparent;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold uppercase tracking-tight mb-3;
+  }
+
+  .section-subtitle {
+    @apply text-sm md:text-base text-gray-400 uppercase tracking-wider font-semibold mb-10;
+  }
+}
