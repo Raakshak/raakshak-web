@@ -15,6 +15,25 @@
   text-align: center;
 }
 
+.footer-brand {
+  margin-bottom: 16px;
+}
+
+.footer-logo {
+  color: #F28C38;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.footer-tagline {
+  color: #555;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
 .footer-text {
   color: #666;
   font-size: 12px;
@@ -43,15 +62,26 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: 30px 15px;
+    padding: 30px 16px;
   }
 
   .footer-links {
-    gap: 15px;
+    gap: 16px;
   }
 
   .footer-text,
   .footer-links a {
     font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 24px 12px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 12px;
   }
 }

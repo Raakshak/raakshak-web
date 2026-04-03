@@ -1,63 +1,70 @@
-/* Reviews Component Styles */
-
+/* Reviews Section */
 .reviews-section {
-  background: rgba(21, 21, 21, 0.5) 0%;
+  padding: 80px 20px;
+  background: rgba(242, 140, 56, 0.02);
   border-top: 1px solid rgba(242, 140, 56, 0.05);
   border-bottom: 1px solid rgba(242, 140, 56, 0.05);
-  padding: 80px 20px;
+  overflow: hidden;
 }
 
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+.reviews-slider-container {
+  overflow: hidden;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.reviews-track {
+  display: flex;
+  gap: 20px;
+  will-change: transform;
 }
 
 .review-card {
+  min-width: 300px;
+  max-width: 300px;
   background: rgba(21, 21, 21, 0.6);
   border: 1px solid rgba(242, 140, 56, 0.15);
-  border-radius: 15px;
+  border-radius: 20px;
   padding: 25px;
-  transition: all 0.3s ease;
+  flex-shrink: 0;
+  transition: border-color 0.3s;
 }
 
 .review-card:hover {
-  border-color: #F28C38;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(242, 140, 56, 0.2);
+  border-color: rgba(242, 140, 56, 0.5);
 }
 
 .review-stars {
-  font-size: 16px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  font-size: 14px;
 }
 
 .review-text {
   color: #ccc;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.7;
-  margin-bottom: 20px;
-  font-style: italic;
+  margin-bottom: 15px;
+  display: block;
 }
 
 .review-name {
-  font-weight: 900;
   color: #F28C38;
-  margin-bottom: 5px;
-  font-size: 14px;
+  font-weight: 900;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 4px;
 }
 
 .review-location {
-  font-size: 12px;
-  color: #666;
+  color: #888;
+  font-size: 11px;
+  display: block;
 }
 
-@media (max-width: 768px) {
-  .reviews-grid {
-    grid-template-columns: 1fr;
-  }
-
+@media (max-width: 480px) {
   .review-card {
+    min-width: 260px;
+    max-width: 260px;
     padding: 20px;
   }
 }

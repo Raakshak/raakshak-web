@@ -1,27 +1,53 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import { REVIEWS } from '../../utils/constants'
 import './Reviews.css'
 
+const StarRating = ({ rating }) => (
+  <div className="review-stars" role="img" aria-label={`${rating} out of 5 stars`}>
+    {Array.from({ length: 5 }, (_, i) => (
+      <span key={i}>⭐</span>
+    ))}
+  </div>
+)
+
 const Reviews = ({ language }) => {
-  const reviews = [
-    {
-      name: 'Rajnish Singh',
-      location: 'New Delhi ✅ Verified',
-      text: 'Delhi ki tight parking mein ye tag bohot kaam aata hai. Privacy safe rehti hai aur kaam bhi ho jata hai.',
-      rating: 5
-    },
-    {
-      name: 'Suresh Absule',
-      location: 'Mumbai ✅ Verified',
-      text: 'Radium quality top class hai. Raat ko chamakta hai toh dur se hi dikh jata hai. Best investment.',
-      rating: 5
-    },
-    {
-      name: 'Vikash Singh',
-      location: 'Chandigarh ✅ Verified',
-      text: 'Police towing se bachne ka best tarika. Ek baar scan karke call aa gaya, meri gaadi bach gayi!',
-      rating: 5
+  const trackRef = useRef(null)
+
+  // Auto-scroll animation
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    let animationId
+    let scrollPos = 0
+    const speed = 0.5
+
+    const animate = () => {
+      scrollPos += speed
+      if (scrollPos >= track.scrollWidth / 2) {
+        scrollPos = 0
+      }
+      track.style.transform = `translateX(-${scrollPos}px)`
+      animationId = requestAnimationFrame(animate)
     }
-  ]
+
+    animationId = requestAnimationFrame(animate)
+
+    const handleMouseEnter = () => cancelAnimationFrame(animationId)
+    const handleMouseLeave = () => { animationId = requestAnimationFrame(animate) }
+
+    track.addEventListener('mouseenter', handleMouseEnter)
+    track.addEventListener('mouseleave', handleMouseLeave)
+
+    return () => {
+      cancelAnimationFrame(animationId)
+      track.removeEventListener('mouseenter', handleMouseEnter)
+      track.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [])
+
+  // Double the reviews for seamless scroll
+  const doubledReviews = [...REVIEWS, ...REVIEWS]
 
   return (
     <section className="reviews-section" id="reviews">
@@ -31,15 +57,19 @@ const Reviews = ({ language }) => {
         </h2>
         <p className="section-subtitle">TRUSTED BY 2,400+ VEHICLE OWNERS ACROSS INDIA</p>
 
-        <div className="reviews-grid">
-          {reviews.map((review, idx) => (
-            <div key={idx} className="review-card">
-              <div className="review-stars">{'⭐'.repeat(review.rating)}</div>
-              <p className="review-text">"{review.text}"</p>
-              <p className="review-name">{review.name}</p>
-              <p className="review-location">{review.location}</p>
-            </div>
-          ))}
+        <div className="reviews-slider-container">
+          <div className="reviews-track" ref={trackRef}>
+            {doubledReviews.map((review, index) => (
+              <div key={`${review.id}-${index}`} className="review-card">
+                <StarRating rating={review.rating} />
+                <p className="review-text">"{review.text}"</p>
+                <span className="review-name">{review.name}</span>
+                <span className="review-location">
+                  {review.location} {review.verified && '✅ Verified'}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

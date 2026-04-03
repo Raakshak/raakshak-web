@@ -1,0 +1,247 @@
+/* Why India Needs Rakshak Section */
+.why-india-section {
+  padding: 80px 20px;
+}
+
+.needs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.needs-card {
+  background: rgba(21, 21, 21, 0.6);
+  border: 1px solid rgba(242, 140, 56, 0.15);
+  border-radius: 20px;
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.needs-card:hover {
+  border-color: #F28C38;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(242, 140, 56, 0.2);
+}
+
+.needs-card.alert-card {
+  border-color: rgba(255, 77, 77, 0.3);
+  background: linear-gradient(145deg, #15803d, #064e3b);
+}
+
+.needs-badge {
+  display: inline-block;
+  background: rgba(242, 140, 56, 0.2);
+  color: #F28C38;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.needs-badge.badge-alert {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.needs-card h4 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.needs-card .alert-title {
+  color: #ff4d4d;
+}
+
+.needs-desc {
+  color: #bbb;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Report Links */
+.report-link-box {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(10, 10, 10, 0.5);
+  border-radius: 15px;
+  border: 1px solid rgba(242, 140, 56, 0.1);
+}
+
+.report-heading {
+  color: #F28C38;
+  font-size: 11px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.report-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.report-list li {
+  margin-bottom: 8px;
+}
+
+.report-list a {
+  color: #bbb;
+  font-size: 11px;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.report-list a:hover {
+  color: #F28C38;
+}
+
+/* About Box */
+.about-box {
+  margin-top: 40px;
+  background: rgba(21, 21, 21, 0.6);
+  border: 1px solid rgba(242, 140, 56, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-content h3 {
+  color: #F28C38;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.about-content p {
+  color: #ccc;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.about-quote {
+  margin-top: 15px;
+  border-left: 3px solid #F28C38;
+  padding-left: 15px;
+  font-style: italic;
+}
+
+.about-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  color: #F28C38;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.stat-label {
+  color: #888;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.about-shield {
+  font-size: 80px;
+  filter: drop-shadow(0 0 20px #F28C38);
+}
+
+@media (max-width: 768px) {
+  .why-india-section {
+    padding: 60px 16px;
+  }
+
+  .needs-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .needs-card {
+    padding: 20px;
+  }
+
+  .about-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 20px;
+  }
+
+  .about-stats {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .about-quote {
+    border-left: none;
+    border-top: 2px solid #F28C38;
+    padding-left: 0;
+    padding-top: 15px;
+  }
+
+  .about-shield {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-india-section {
+    padding: 40px 12px;
+  }
+
+  .needs-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .needs-card h4 {
+    font-size: 16px;
+  }
+
+  .needs-desc {
+    font-size: 12px;
+  }
+
+  .about-box {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .about-content h3 {
+    font-size: 16px;
+  }
+
+  .about-content p {
+    font-size: 12px;
+  }
+
+  .stat-num {
+    font-size: 20px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  .report-link-box {
+    padding: 15px 12px;
+  }
+}

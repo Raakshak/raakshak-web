@@ -1,0 +1,131 @@
+/* Benefits Slider Modal */
+.slider-container-main {
+  position: relative;
+  max-width: 700px;
+  width: 95%;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(242, 140, 56, 0.3);
+  border-radius: 20px;
+  display: flex;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.slider-close-x {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #888;
+  z-index: 10;
+  transition: color 0.3s;
+}
+
+.slider-close-x:hover {
+  color: #F28C38;
+}
+
+.slider-image-side {
+  flex: 1;
+  background: #080808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+}
+
+.slider-image-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-placeholder-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #111, #0a0a0a);
+  font-size: 60px;
+}
+
+.slider-content-side {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slider-title {
+  color: #F28C38;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.slider-desc {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.slider-nav-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.slider-nav-arrow {
+  background: rgba(242, 140, 56, 0.2);
+  border: 1px solid #F28C38;
+  color: #F28C38;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.slider-nav-arrow:hover {
+  background: #F28C38;
+  color: #000;
+}
+
+.slider-counter {
+  color: #888;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .slider-container-main {
+    flex-direction: column;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .slider-image-side {
+    min-height: 150px;
+    max-height: 200px;
+  }
+
+  .slider-content-side {
+    padding: 20px;
+  }
+
+  .slider-title {
+    font-size: 18px;
+  }
+
+  .slider-desc {
+    font-size: 13px;
+  }
+}

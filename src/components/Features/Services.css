@@ -19,6 +19,25 @@
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
+}
+
+.service-badge {
+  display: inline-block;
+  background: rgba(242, 140, 56, 0.2);
+  color: #F28C38;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.service-desc {
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .service-card:hover {
@@ -66,7 +85,46 @@
 }
 
 @media (max-width: 768px) {
+  .services-section {
+    padding: 60px 16px;
+    margin-top: 0;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-section {
+    padding: 40px 12px;
+  }
+
+  .service-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .service-icon {
+    font-size: 40px;
+  }
+
+  .service-title {
+    font-size: 16px;
+  }
+
+  .service-price {
+    font-size: 16px;
+  }
+
+  .btn-service {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 13px;
   }
 }

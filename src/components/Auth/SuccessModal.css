@@ -1,0 +1,130 @@
+/* Success Modal */
+.success-modal-content {
+  position: relative;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  padding: 25px;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(242, 140, 56, 0.3);
+  border-radius: 20px;
+}
+
+.success-title {
+  color: #00FF00;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+/* Sticker Preview */
+.final-sticker-preview {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 380px;
+}
+
+.sticker-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background: white;
+}
+
+.sticker-logo img {
+  width: 75px;
+}
+
+.sticker-title h3 {
+  color: #1a1a1a;
+  font-size: 14px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.sticker-qr img {
+  width: 80px;
+  border: 1px solid #eee;
+}
+
+.sticker-bottom {
+  background: #F28C38;
+  padding: 10px;
+  text-align: center;
+}
+
+.vnum-display {
+  color: #fff;
+  font-weight: 900;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+/* User ID Box */
+.user-id-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 1px solid rgba(242, 140, 56, 0.3);
+}
+
+.user-id-label {
+  color: #888;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.user-id-value {
+  color: #F28C38;
+  letter-spacing: 4px;
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.success-msg {
+  font-size: 13px;
+  color: #fff;
+  margin-top: 15px;
+}
+
+.btn-done {
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px;
+  background: #F28C38;
+  color: #000;
+  border: none;
+  border-radius: 15px;
+  font-weight: 900;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.btn-done:hover {
+  background: #ff6a00;
+  box-shadow: 0 10px 25px rgba(242, 140, 56, 0.4);
+}
+
+@media (max-width: 480px) {
+  .success-modal-content {
+    padding: 20px 16px;
+  }
+
+  .sticker-title h3 {
+    font-size: 12px;
+  }
+
+  .vnum-display {
+    font-size: 18px;
+  }
+}

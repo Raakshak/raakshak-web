@@ -17,22 +17,27 @@
   margin-bottom: 20px;
 }
 
-.contact-section .section-title .highlight {
-  color: #fff;
-}
-
 .contact-info {
   background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 40px;
   margin-top: 30px;
 }
 
-.contact-info p {
+.contact-details {
+  margin-bottom: 24px;
+}
+
+.contact-line {
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+
+.contact-label {
+  font-weight: 900;
 }
 
 .contact-buttons {
@@ -53,7 +58,9 @@
   transition: all 0.3s ease;
   font-size: 14px;
   letter-spacing: 0.5px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn-contact:hover {
@@ -73,20 +80,46 @@
 }
 
 @media (max-width: 768px) {
+  .contact-section {
+    padding: 60px 16px;
+  }
+
   .contact-info {
-    padding: 30px;
+    padding: 30px 20px;
   }
 
   .contact-buttons {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
   }
 
   .btn-contact {
     width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
   }
 
-  .contact-info p {
+  .contact-line {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 40px 12px;
+  }
+
+  .contact-info {
+    padding: 24px 16px;
+    border-radius: 14px;
+  }
+
+  .contact-line {
+    font-size: 13px;
+  }
+
+  .btn-contact {
+    font-size: 13px;
+    padding: 12px 20px;
   }
 }
